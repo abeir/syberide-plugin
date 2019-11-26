@@ -1,11 +1,11 @@
 {
-    \"Name\" : \"sdkmanager\",
+    \"Name\" : \"SyberOSVersion\",
     \"Version\" : \"0.0.1\",
     \"CompatVersion\" : \"0.0.1\",
     \"Vendor\" : \"SyberOS\",
     \"Copyright\" : \"(C) 2015 SyberOS Ltd\",
     \"License\" : \"Commercial Usage\",
-    \"Description\" : \"sdkmanager\",
+    \"Description\" : \"SyberOSVersion\",
     \"Url\" : \"http://www.syberos.com\",
     $$dependencyList
 }
