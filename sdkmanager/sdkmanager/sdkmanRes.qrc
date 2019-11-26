@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/sdkmanager">
+        <file>images/yuanxin-128.png</file>
+        <file>images/yuanxin-64.png</file>
+    </qresource>
+</RCC>
