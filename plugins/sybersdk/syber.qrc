@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/sybersdk">
+        <file>images/yuanxin-32.png</file>
+        <file>images/yuanxin-64.png</file>
+        <file>images/yuanxin-128.png</file>
+    </qresource>
+</RCC>

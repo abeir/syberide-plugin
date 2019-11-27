@@ -1,0 +1,12 @@
+#ifndef SYBERSDK_GLOBAL_H
+#define SYBERSDK_GLOBAL_H
+
+#include <QtGlobal>
+
+#if defined(SYBERSDK_LIBRARY)
+#  define SYBERSDKSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define SYBERSDKSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // SYBERSDK_GLOBAL_H

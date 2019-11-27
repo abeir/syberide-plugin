@@ -1,0 +1,11 @@
+{
+    \"Name\" : \"SyberSDK\",
+    \"Version\" : \"0.0.1\",
+    \"CompatVersion\" : \"0.0.1\",
+    \"Vendor\" : \"SyberOS\",
+    \"Copyright\" : \"(C) 2015 SyberOS Ltd\",
+    \"License\" : \"Commercial Usage\",
+    \"Description\" : \"Syber SDK.\",
+    \"Url\" : \"http://www.syberos.com\",
+    $$dependencyList
+}
