@@ -170,7 +170,6 @@ bool sdkmanagerPlugin::initialize(const QStringList &arguments, QString *errorSt
     QAction *action = new QAction(tr("交叉编译套件管理工具"), this);//QAction *action = new QAction(tr("sdkmanager"), this);
     Core::Command *cmd = Core::ActionManager::registerAction(action, Constants::ACTION_ID,
                                                              Core::Context(Core::Constants::C_GLOBAL));
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Alt+Meta+A")));
     connect(action, SIGNAL(triggered()), this, SLOT(triggerAction()));
 
     Core::ActionContainer *menu = Core::ActionManager::createMenu(Constants::MENU_ID);

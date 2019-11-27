@@ -1,0 +1,45 @@
+QWidget#basewidget{
+    background:#808080;
+}
+
+QPushButton#closeButton{
+    border-image:url(:/button/close);
+}
+QPushButton#closeButton:hover{
+    border-image:url(:/button/close_hover);
+}
+
+QPushButton#closeButton:pressed{
+    border-image:url(:/button/close_pressed);
+}
+
+QPushButton#cancelButton,QPushButton#okButton,QPushButton#tipButton{
+    background-color: #F0E68C;
+    border-radius: 10px;
+    font: bold 14px;
+    min-width: 5em;
+    padding: 6px;
+}
+
+QPushButton#cancelButton:hover,QPushButton#okButton:hover,QPushButton#tipButton:hover{
+    background-color: #F4A460;
+    border-radius: 10px;
+    font: bold 14px;
+    min-width: 5em;
+    padding: 6px;
+}
+
+
+QLabel#aboutTitle
+{
+    color: white;
+    font-size: 15px;
+}
+
+QWidget#backgroundWidget{
+    background:#FFFFFF;
+}
+
+QTextEdit#messageText{
+    background:#FFFFFF;
+}
