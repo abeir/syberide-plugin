@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>images/device_128.ico</file>
+        <file>images/device_64.ico</file>
+        <file>images/device_32.ico</file>
+    </qresource>
+</RCC>

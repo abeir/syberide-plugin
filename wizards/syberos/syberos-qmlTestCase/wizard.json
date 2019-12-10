@@ -1,0 +1,103 @@
+{
+    "version": 1,
+    "kind": "file",
+    "id": "A.QmlTest",
+    "category": "R.Qt",
+    "trDescription": "Creates a QML test case that you can add to a QML project.",
+    "trDisplayName": "QML Test Case",
+    "trDisplayCategory": "Qt",
+    "icon": "genericfilewizard.png",
+    "enabled": "%{JS: [ %{Plugins} ].indexOf('CppEditor') >= 0}",
+
+    "options":
+    [
+        { "key": "ElementName", "value": "%{CppElementName}"},
+        { "key": "ElementNameEmpty", "value": "%{JS: '%{ElementName}'.indexOf('%') >= 0}"},
+        { "key": "DefaultClassName", "value": "%{JS: (%{ElementNameEmpty}) ? '%{TestClassPrefix}' : '%{TestClassPrefix}%{ElementName}'}"},
+        { "key": "TestClassPrefix", "value": "Test" },
+        { "key": "TestSrcFilePrefix", "value":"tst_" },
+        { "key": "TargetPath", "value": "%{Path}" },
+        { "key": "SrcPath", "value": "%{Path}/%{SrcFileName}" },
+        { "key": "CN", "value": "%{JS: Cpp.className('%{Class}')}" },
+        { "key": "GUARD", "value": "%{JS: Cpp.classToHeaderGuard('%{Class}', '%{JS: Util.preferredSuffix('text/x-qml')}')}" }
+    ],
+
+    "pages":
+    [
+        {
+            "trDisplayName": "Define Class",
+            "trShortTitle": "Test Class Details",
+            "typeId": "Fields",
+            "data" :
+            [
+                {
+                    "name": "TestCaseName",
+                    "trDisplayName": "Test Case name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data":
+                    {
+                        "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)+[a-zA-Z_][a-zA-Z_0-9]*|)",
+                        "trText": "%{DefaultClassName}"
+                    }
+                },
+                {
+                    "name": "SrcFileName",
+                    "type": "LineEdit",
+                    "trDisplayName": "Source file:",
+                    "mandatory": true,
+                    "data":
+                    {
+                        "trText": "%{JS: Cpp.classToFileName('%{TestSrcFilePrefix}%{TestCaseName}', '%{JS: Util.preferredSuffix('text/x-qml')}')}"
+                    }
+                },
+                {
+                    "name": "Path",
+                    "type": "PathChooser",
+                    "trDisplayName": "Path:",
+                    "mandatory": true,
+                    "data":
+                    {
+                        "kind": "existingDirectory",
+                        "basePath": "%{InitialPath}",
+                        "path": "%{InitialPath}"
+                    }
+                },
+                {
+                    "name": "testSlotName",
+                    "type": "LineEdit",
+                    "trDisplayName": "Test slot",
+                    "mandatory": true,
+                    "data":
+                    {
+                        "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)+[a-zA-Z_][a-zA-Z_0-9]*|)",
+                        "trText": "testCase1"
+                    }
+                }
+            ]
+        },
+        {
+            "trDisplayName": "Project Management",
+            "trShortTitle": "Summary",
+            "typeId": "Summary"
+        }
+    ],
+
+    "generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [
+                {
+                    "source": "file.qml.tpl",
+                    "target": "%{JS: Util.fileName('%{SrcPath}', '%{JS: Util.preferredSuffix('text/x-qml')}')}",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

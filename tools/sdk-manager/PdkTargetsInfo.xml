@@ -1,0 +1,23 @@
+<Packages>
+    <Targets>
+	<Name>Targets</Name>
+        <arch>
+           <archName>armv7tnhl</archName>
+           <branchNames>
+ 	   	<branchName>main_dev</branchName>
+ 	   	<branchName>xuanwu</branchName>
+ 	   	<branchName>miit_cert</branchName>
+ 	   	<branchName>product_lily</branchName>
+ 	   	<branchName>ginkgo_millet</branchName>
+          </branchNames>
+    	</arch>
+        <arch>
+           <archName>i686</archName>
+           <branchNames>
+ 	   	<branchName>main_dev</branchName>
+ 	   	<branchName>xuanwu</branchName>
+ 	   	<branchName>product_lily</branchName>
+          </branchNames>
+    	</arch>
+    </Targets>
+</Packages>

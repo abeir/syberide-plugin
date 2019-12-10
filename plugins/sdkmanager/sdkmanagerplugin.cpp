@@ -32,7 +32,7 @@ SdkManagerMode::SdkManagerMode()
 {
     setDisplayName(tr("套件"));
     setIcon(QIcon(QLatin1String(":/sdkmanager/images/yuanxin-64.png")));
-    setPriority(2); //THe lowest priority
+    setPriority(3); //THe lowest priority
     setId("SdkManager");
     setContextHelp("Qt Creator Manual");
     setContext(Core::Context("sdkmanagerMode"));

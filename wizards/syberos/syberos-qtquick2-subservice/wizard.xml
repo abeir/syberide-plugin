@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2015 yuanxin LTD
+** Contact: fenghao02@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="D.QtQuick2Subservice" category="B.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <icon>res/app.png</icon>
+    <description>Creates a subproject with service support for SyberOS.</description>
+    <displayname>Subproject with service support</displayname>
+    <displaycategory>Syber Projects</displaycategory>
+	<fieldpagetitle>Service information</fieldpagetitle>
+    <fields>
+		<field mandatory="true" name="SERVICEID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MyService" />
+            <fielddescription>Service identification(SERVICEID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your service here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+    </fields>
+    <files>
+		<file source="app.pro" target="%SERVICEID%.pro" openproject="true"/>        
+        <file source="src/main.cpp" openeditor="true"/>
+		<file source="src/service_workspace.cpp" target="src/%SERVICEID%_workspace.cpp"/>
+		<file source="src/service_workspace.h" target="src/%SERVICEID%_workspace.h"/>
+    </files>
+</wizard>
+

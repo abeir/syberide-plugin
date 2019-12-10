@@ -1,0 +1,136 @@
+#include"onlineInstallWidget.h"
+#include<QLineEdit>
+#include<QDir>
+#include<QHBoxLayout>
+#include<QVBoxLayout>
+#include<QGridLayout>
+#include<QFormLayout>
+
+const char sdkInstallPathTip[] = "SDK安装路径:";
+const char sdkInstallPath[] = "/Syberos-PDK";
+const char onInstallSDKTip[] = "只安装SDK";
+const char onInstallTargetTip[] = "只安装TARGET";
+const char installSDKAndTargetTip[] = "SDK和TARGET同时安装";
+const char platformArchTip[] = "平台架构:";
+
+OnlineInstallWidget::OnlineInstallWidget(QWidget *parent) :
+QWidget(parent)
+{
+    this->initUI();
+}
+
+void OnlineInstallWidget::createComponent()
+{
+    sdkPathTextLabel=new QLabel;
+    sdkPathTextLabel->setText(QString(sdkInstallPathTip));
+   sdkPathLineEdit=new QLineEdit;
+   sdkPathLineEdit->setText(QString(QDir::homePath()+QString(sdkInstallPath)));
+   sdkPathLineEdit->setFixedWidth(280);
+   onlyInstallSDKButton=new QRadioButton;
+   onlyInstallSDKButton->setText(QString(onInstallSDKTip));
+
+   onlyInstallTargetButton=new QRadioButton;
+   onlyInstallTargetButton->setText(QString(onInstallTargetTip));
+
+  InstallButton=new QRadioButton;
+  InstallButton->setText(QString(installSDKAndTargetTip));
+  InstallButton->setChecked(true);
+
+   archLabel=new QLabel;
+   archLabel->setText(QString());
+   archLabel->setFixedHeight(100);
+   armv7CheckBox=new QCheckBox;
+   armv7CheckBox->setText(QString("armv7tnhl"));
+   armv7CheckBox->setChecked(true);
+   i686CheckBox=new QCheckBox;
+   i686CheckBox->setText(QString("i686"));
+   i686CheckBox->setChecked(true);
+
+   targetBranchName=new QLabel;
+   targetBranchName->setText(QString("TARGET分支名:"));
+   targetBranchName->setFixedSize(100,20);
+   main_devCheckBox=new QCheckBox;
+   main_devCheckBox->setText(QString("main_dev"));
+   xuanwuCheckBox=new QCheckBox;
+   xuanwuCheckBox->setText(QString("xuanwu"));
+   miit_certCheckBox=new QCheckBox;
+   miit_certCheckBox->setText(QString("miit_cert"));
+   product_lilyCheckBox=new QCheckBox;
+   product_lilyCheckBox->setText(QString("product_lily"));
+   ginkgo_milletCheckBox=new QCheckBox;
+   ginkgo_milletCheckBox->setText(QString("ginkgo_millet"));
+
+   archGroupBox=new QGroupBox(QString("平台架构"));
+   targetBranchNameBox=new QGroupBox(QString("TARGET分支名"));
+   InstallChooseBox=new QGroupBox(QString("安装选项"));
+}
+
+QHBoxLayout* OnlineInstallWidget::createLayout()
+{
+
+       QFormLayout*formLayoutSdkPath=new QFormLayout;
+       formLayoutSdkPath->addRow(QString(sdkInstallPathTip),sdkPathLineEdit);
+       formLayoutSdkPath->setSpacing(10);
+
+
+    QVBoxLayout* vLayoutInstallChoose=new QVBoxLayout;
+    vLayoutInstallChoose->addWidget(InstallButton);
+    vLayoutInstallChoose->addWidget(onlyInstallSDKButton);
+    vLayoutInstallChoose->addWidget(onlyInstallTargetButton);
+    vLayoutInstallChoose->addStretch();
+    InstallChooseBox->setLayout(vLayoutInstallChoose);
+
+    QVBoxLayout* vLayoutArchChoose=new QVBoxLayout;
+    vLayoutArchChoose->addWidget(armv7CheckBox);
+    vLayoutArchChoose->addWidget(i686CheckBox);
+    vLayoutArchChoose->addStretch();
+    archGroupBox->setLayout(vLayoutArchChoose);
+
+    QVBoxLayout*vLayoutBranchNameChoose=new QVBoxLayout;
+    vLayoutBranchNameChoose->addWidget(main_devCheckBox);
+    vLayoutBranchNameChoose->addWidget(xuanwuCheckBox);
+    vLayoutBranchNameChoose->addWidget(miit_certCheckBox);
+    vLayoutBranchNameChoose->addWidget(product_lilyCheckBox);
+    vLayoutBranchNameChoose->addWidget(ginkgo_milletCheckBox);
+    vLayoutBranchNameChoose->setSpacing(20);
+    vLayoutBranchNameChoose->addStretch();
+    targetBranchNameBox->setLayout(vLayoutBranchNameChoose);
+
+    QVBoxLayout*vLayoutRight=new QVBoxLayout;
+    vLayoutRight->addWidget(archLabel);
+    vLayoutRight->addWidget(targetBranchNameBox);
+
+
+//    QGridLayout*gLayoutWhole=new QGridLayout;
+
+//     gLayoutWhole->addLayout(hboxLayout,0,10,1,3);
+//     gLayoutWhole->addWidget(InstallChooseBox,1,10,4,3);
+//     gLayoutWhole->addWidget(archGroupBox,3,10,3,3);
+//     gLayoutWhole->addWidget(targetBranchNameBox,0,15,6,3);
+//     gLayoutWhole->setSpacing(10);
+
+
+    QVBoxLayout *vLayoutLeft=new QVBoxLayout;
+    vLayoutLeft->addSpacing(30);
+    vLayoutLeft->addLayout(formLayoutSdkPath);
+    vLayoutLeft->addSpacing(50);
+    vLayoutLeft->addWidget(InstallChooseBox);
+    vLayoutLeft->addWidget(archGroupBox);
+    vLayoutLeft->addStretch();
+
+    QHBoxLayout *hBoxLayoutWhole=new QHBoxLayout;
+    hBoxLayoutWhole->addStretch();
+    hBoxLayoutWhole->addLayout(vLayoutLeft);
+    hBoxLayoutWhole->addLayout(vLayoutRight);
+    hBoxLayoutWhole->addSpacing(50);
+     hBoxLayoutWhole->addStretch();
+
+    return hBoxLayoutWhole;
+
+}
+void OnlineInstallWidget::initUI()
+{
+   createComponent();
+    QHBoxLayout* gLayout=createLayout();
+    this->setLayout(gLayout);
+}

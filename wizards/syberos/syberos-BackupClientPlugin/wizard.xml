@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2014 yuanxin LTD
+** Contact: zhangxiaowei@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="B.SyberOSBackupPlugin" category="C.CustomPlugins"
+        featuresRequired="Syberos.Wizards.Feature">
+    <icon>lib.png</icon>
+    <description>Creates a backup-restore plugin to support the Backup and Restore function in Settings of SyberOS.</description>
+    <displayname>SyberOS BackupRestore Plugin</displayname>
+    <displaycategory>Syber Libraries</displaycategory>
+    <files>
+        <file source="include/syberBackupInterface.h" target="include/syberBackupInterface.h"/>
+        <file source="plugin.h" target="%ProjectName:l%_plugin.%CppHeaderSuffix%"/>
+        <file source="plugin.cpp" target="%ProjectName:l%_plugin.%CppSourceSuffix%" openeditor="true"/>
+        <file source="project.pro" target="%ProjectName%.pro" openproject="true"/>
+    </files>
+</wizard>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2014 yuanxin LTD
+** Contact: zhangxiaowei@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="A.QtQuick2AppRPM" category="B.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <icon>app/res/icon.png</icon>
+    <description>Creates a application project with GUI support for SyberOS.</description>
+    <displayname>Application with GUI support</displayname>;
+    <displaycategory>Syber Projects</displaycategory>
+    <fieldpagetitle>Application information</fieldpagetitle>
+    <fields>
+		<field mandatory="true" name="APPID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MyApp" />
+            <fielddescription>GUI application identification(APPID):</fielddescription>
+        </field>
+        <field mandatory="true" name="SOPID">
+            <fieldcontrol class="QLineEdit" validator='^[^"/ ]+$' defaulttext="com.mycompany.myApp" />
+            <fielddescription>SOP identification(SOPID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your application here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+        <!--
+        <field name="AppType">
+            <fieldcontrol class="QComboBox" combochoices="3rd party" defaultindex="0"/>
+            <fielddescription>Application type:</fielddescription>
+        </field>
+        -->
+    </fields>
+    <files>
+        <file source="app/src/main.cpp" target="%APPID%/src/main.cpp" openeditor="true"/>
+        <file source="app/qml/main.qml.tpl" target="%APPID%/qml/main.qml"/>
+        <file source="app/res.qrc" target="%APPID%/res.qrc"/>
+	<file source="sopconfig.xml"/>
+        <file source="project.pro" target="%ProjectName%.pro" openproject="true"/>
+	<file source="syberos.pri"/>
+	<file source="tests/tests.pro"/>
+        <file source="app/res/app.png" target="%APPID%/res/%APPID%.png" binary="true"/>
+	<file source="app/app.pro" target="%APPID%/%APPID%.pro"/>
+	<file source="app/src/app.h" target="%APPID%/src/%APPID%_Workspace.h"/>
+	<file source="app/src/app.cpp" target="%APPID%/src/%APPID%_Workspace.cpp"/>
+        <file source="META-INF/SyberOSSdkDebug.pem"/>
+    </files>
+</wizard>

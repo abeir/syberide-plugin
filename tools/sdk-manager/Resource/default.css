@@ -1,0 +1,27 @@
+QWidget#basewidget{
+    background:#808080;
+}
+
+QPushButton#closeButton{
+    border-image:url(:/sysButton/close);
+}
+QPushButton#closeButton:hover{
+    border-image:url(:/sysButton/close_hover);
+}
+
+QPushButton#closeButton:pressed{
+    border-image:url(:/sysButton/close_pressed);
+}
+
+QPushButton#minButton{
+    border-image:url(:/sysButton/min);
+}
+
+QPushButton#minButton:hover{
+    border-image:url(:/sysButton/min_hover);
+}
+
+QPushButton#minButton:pressed{
+    border-image:url(:/sysButton/min_pressed);
+}
+

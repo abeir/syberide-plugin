@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sopconfig xmlns:syberos="http://schemas.syberos.com/sop/res/syberos/v1"
+    syberos:sopid="%SOPID%"
+    syberos:versionCode="1"
+    syberos:versionName="1.0.0">
+    <application syberos:debuggable="true"
+        syberos:description="%DESCRIPTION%"
+        syberos:icon="res/%ProjectName%.png"
+        syberos:name="%ProjectName%">
+    </application>
+</sopconfig>
+

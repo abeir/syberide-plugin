@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2015 yuanxin LTD
+** Contact: fenghao02@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="C.QtQuick2Subapp" category="B.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <icon>res/icon.png</icon>
+    <description>Creates a subproject with GUI support for SyberOS.</description>
+    <displayname>Subproject with GUI support</displayname>
+    <displaycategory>Syber Projects</displaycategory>
+	<fieldpagetitle>Application information</fieldpagetitle>
+    <fields>
+		<field mandatory="true" name="APPID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MyApp" />
+            <fielddescription>GUI application identification(APPID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your application here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+    </fields>
+    <files>
+		<file source="app.pro" target="%APPID%.pro" openproject="true"/>        
+        <file source="src/main.cpp" openeditor="true"/>
+		<file source="src/app.h" target="src/%APPID%_workspace.h"/>
+		<file source="src/app.cpp" target="src/%APPID%_workspace.cpp"/>
+		<file source="qml/main.qml.tpl" target="qml/main.qml"/>
+		<file source="qml.qrc"/>
+		<file source="images.qrc"/>
+		<file source="res/app.png" target="res/%APPID%.png" binary="true"/>
+    </files>
+</wizard>
+

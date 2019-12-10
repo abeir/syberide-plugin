@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sopconfig xmlns:syberos="http://schemas.syberos.com/sop/res/syberos/v1"
+    syberos:sopid="%SOPID%"
+    syberos:versionCode="1"
+    syberos:versionName="1.0.0">
+    <uses-permission />
+    <uses-sdk />
+    <application syberos:debuggable="true"
+        syberos:description="%DESCRIPTION%"
+        syberos:icon="res/%APPID%.png"
+        syberos:name="%ProjectName%">
+        <uiapp syberos:id="%APPID%"
+            syberos:exec="bin/%APPID%"
+            syberos:icon="res/%APPID%.png"
+            syberos:launcher="true">
+        </uiapp>
+    </application>
+</sopconfig>

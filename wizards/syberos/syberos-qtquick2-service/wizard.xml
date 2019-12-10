@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2015 yuanxin LTD
+** Contact: zhangxiaowei@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="B.QtQuick2AppSOP" category="B.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <icon>app/res/icon.png</icon>
+    <description>Creates a Gui application project which contains a service process running background for SyberOS.</description>
+    <displayname>Gui Application with service support</displayname>;
+    <displaycategory>Syber Projects</displaycategory>
+    <!-- Create a 2nd wizard page with parameters -->
+    <fieldpagetitle>Application information</fieldpagetitle>
+    <fields>
+        <field mandatory="true" name="SOPID">
+            <fieldcontrol class="QLineEdit" validator='^[^"/ ]+$' defaulttext="com.mycompany.%ProjectName%" />
+            <fielddescription>SOP identification(SOPID):</fielddescription>
+        </field>
+		<field mandatory="true" name="APPID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MyApp" />
+            <fielddescription>GUI application identification(APPID):</fielddescription>
+        </field>
+		<field mandatory="true" name="SERVICEID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MyService" />
+            <fielddescription>Service identification(SERVICEID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your application here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+    </fields>
+	<files>
+		<file source="syberos.pri"/>
+		<file source="sopconfig.xml"/>
+		<file source="tests/tests.pro"/>
+		<file source="META-INF/SyberOSSdkDebug.pem" binary="true"/>
+		<file source="project.pro" target="%ProjectName%.pro" openproject="true"/>
+		<file source="app/app.pro" target="%APPID%/%APPID%.pro"/>
+		<file source="app/qml.qrc" target="%APPID%/qml.qrc"/>
+		<file source="app/images.qrc" target="%APPID%/images.qrc"/>
+		<file source="app/src/main.cpp" target="%APPID%/src/main.cpp"/>
+		<file source="app/src/app.cpp" target="%APPID%/src/%APPID%_workspace.cpp" openeditor="true"/>
+		<file source="app/src/app.h" target="%APPID%/src/%APPID%_workspace.h"/>
+		<file source="app/res/app.png" target="%APPID%/res/%APPID%.png" binary="true"/>
+		<file source="app/qml/main.qml.tpl" target="%APPID%/qml/main.qml"/>
+		<file source="service/service.pro" target="%SERVICEID%/%SERVICEID%.pro"/>
+		<file source="service/src/main.cpp" target="%SERVICEID%/src/main.cpp"/>
+		<file source="service/src/service_workspace.cpp" target="%SERVICEID%/src/%SERVICEID%_workspace.cpp"/>
+		<file source="service/src/service_workspace.h" target="%SERVICEID%/src/%SERVICEID%_workspace.h"/>
+    </files>
+</wizard>

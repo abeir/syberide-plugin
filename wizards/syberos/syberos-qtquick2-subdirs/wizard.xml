@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2015 yuanxin LTD
+** Contact: fenghao02@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="E.QtQuick2Subdirs" category="B.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <icon>res/icon.png</icon>
+    <description>Creates a syberos-based subdirs project. This allows you to group your projects in a tree structure.</description>
+    <displayname>Empty subdirs project</displayname>
+    <displaycategory>Syber Projects</displaycategory>
+	<fieldpagetitle>Application information</fieldpagetitle>
+    <fields>
+        <field mandatory="true" name="SOPID">
+            <fieldcontrol class="QLineEdit" validator='^[^"/ ]+$' defaulttext="com.mycompany.%ProjectName%" />
+            <fielddescription>SOP identification(SOPID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your application here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+    </fields>
+    <files>
+		<file source="app.pro" target="%ProjectName%.pro" openproject="true"/>
+		<file source="syberos.pri"/>		
+		<file source="sopconfig.xml"/>
+		<file source="META-INF/DEBUG.KEY"/>
+    </files>
+</wizard>
+

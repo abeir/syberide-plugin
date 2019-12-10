@@ -16,6 +16,7 @@ void ShadowWidget::reject()
 
 void ShadowWidget::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event)
     QStyleOption opt;
     opt.init(this);
     QPainter p(this);

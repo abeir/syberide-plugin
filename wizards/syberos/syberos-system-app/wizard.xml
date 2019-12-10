@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2014 yuanxin LTD
+** Contact: zhangxiaowei@syberos.com
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qmakeproject" firstpage="10"
+        id="A.QtSysberOSAppRPM" category="C.CustomProjects" featuresRequired="Syberos.Wizards.Feature">
+    <description>Creates a system application project for SyberOS.This application can only be packaged with the system image released.</description>
+    <displayname>Application</displayname>;
+    <displaycategory>Syber system application</displaycategory>
+    <fieldpagetitle>Syber system application</fieldpagetitle>
+    <fields>
+		<field mandatory="true" name="APPID">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MySystemApp" />
+            <fielddescription>Syber system application identification(APPID):</fielddescription>
+        </field>
+        <field mandatory="true" name="SOPID">
+            <fieldcontrol class="QLineEdit" validator='^[^"/ ]+$' defaulttext="com.mycompany.mySystemApp" />
+            <fielddescription>SOP identification(SOPID):</fielddescription>
+        </field>
+		<field name="DESCRIPTION">
+    	<fieldcontrol class="QTextEdit" defaulttext="Brief introduction of your application here. " />
+        	<fielddescription>Description:</fielddescription>
+		</field>
+        <!--
+        <field name="AppType">
+            <fieldcontrol class="QComboBox" combochoices="3rd party" defaultindex="0"/>
+            <fielddescription>Application type:</fielddescription>
+        </field>
+        -->
+    </fields>
+    <files>
+        <file source="src/main.cpp" openeditor="true"/>
+	<file source="project.pro" target="%ProjectName%.pro" openproject="true"/>
+	<file source="rpm/helloSyberOS.spec"/>
+        <file source="src/src.pro"/>
+        <file source="tests/tests.pro"/>
+        <file source="tests/test_example/test_example.pro"/>
+        <file source="tests/test_example/test_example.cpp"/>
+    </files>
+</wizard>

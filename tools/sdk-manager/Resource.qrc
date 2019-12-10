@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file alias="watermark">Resource/icon/watermark.png</file>
+        <file alias="logo">Resource/icon/logo.png</file>
+        <file alias="banner">Resource/icon/icon.png</file>
+        <file alias="waiting">Resource/images/waiting.gif</file>
+    </qresource>
+    <qresource prefix="/translate">
+        <file>sdk-manager.qm</file>
+    </qresource>
+</RCC>

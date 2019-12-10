@@ -82,7 +82,7 @@ SyberSDKMode::SyberSDKMode() :
     qtLogo.addFile(QLatin1String(Constants::SYBER_64_ICON));
     qtLogo.addFile(QLatin1String(Constants::SYBER_128_ICON));
     setIcon(qtLogo);
-    setPriority(1); //THe lowest priority
+    setPriority(2); //THe lowest priority
     setId("SyberSDK");
     setContextHelp("Qt Creator SyberSDK");
     setContext(Core::Context("Syber.SyberSDKMode"));

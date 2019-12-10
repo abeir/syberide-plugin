@@ -5,3 +5,4 @@
 .history
 *.pro.user
 build-*
+test/
